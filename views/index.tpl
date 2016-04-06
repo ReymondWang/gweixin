@@ -129,13 +129,13 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>桌面</a>
+                        <a href="##" onclick="loadUrl('/desktop', '用户桌面')"><i class="fa fa-dashboard fa-fw nav_icon"></i>桌面</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-laptop nav_icon"></i>帐号管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="grids.html">帐号绑定</a>
+                                <a href="##" onclick="loadUrl('/weixinaccount/list', '帐号管理 > 帐号绑定')">帐号绑定</a>
                             </li>
                             <li>
                                 <a href="grids.html">自定义菜单</a>
@@ -150,15 +150,26 @@
         <!-- /.navbar-static-side -->
     </nav>
     <div id="page-wrapper">
-        <div class="graphs">
-            <div class="copy">
-                <div class="progress progress-striped active">
-                    <div class="progress-bar progress-bar-info" style="width: 100%"></div>
+        <div id="divContentTitle" class="top-navbar-title">
+        </div>
+        <div id="divContent" class="graphs" style="position:relative; overflow-y:auto;">
+        </div>
+        <div id="divContentBlock" class="main-content-block" style="display:none;">
+        </div>
+    </div>
+</div>
+<div id="divTotalBlock" class="total-content-block" style="top: 0px;left: 0px;background-color:rgba(0, 0, 0, 0.35);width:100%;position: absolute;z-index:1000; display: none;">
+    <div class="Compose-Message" style="width:800px; height:600px; position:absolute; top:50%; left:50%; margin:-300px 0 0 -400px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div id="divPanelHeading" style="float:left;"></div>
+                <div class="btn btn-default" style="margin-top:-5px; background-color:#f6f6f6; border-style:none; float:right !important;" onclick="closeBlockView();">
+                    <i class="fa fa-times"></i>
                 </div>
-                <div class="clearfix"> </div>
+            </div>
+            <div id="divBlockContent" class="panel-body">
             </div>
         </div>
-
     </div>
 </div>
 <!-- jQuery -->
@@ -171,5 +182,51 @@
 <script src="static/js/rickshaw.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="static/js/bootstrap.min.js"></script>
+<!-- 设定主要显示区域的高度 -->
+<script>
+    $(document).ready(function(){
+        var viewHeight = $(window).height();
+        $("#divContent").css("height", viewHeight - 91);
+        $("#divContentBlock").css("height", viewHeight - 51);
+        $("#divTotalBlock").css("height", viewHeight);
+        loadUrl("/desktop", "用户桌面");
+    });
+
+    function loadUrl(fetchUrl, title, mode){
+        $.ajax({
+            url: fetchUrl,
+            async: true,
+            contentType: "text/html",
+            dataType: "html",
+            beforeSend: function(){
+                var progressBar = "<div class=\"progress progress-striped active\" style=\"position:absolute;top:30%;left:50%;width:220px;height:26px;margin:-13px 0 0 -220px;\">";
+                progressBar += "<div class=\"progress-bar progress-bar-info\" style=\"width:100%; height:26px; line-height:26px;\">正在加载......</div>";
+                progressBar += "</div>";
+                $("#divContentBlock").css("display", "block");
+                $("#divContentBlock").html(progressBar);
+            },
+            success: function(data){
+                $("#divContentBlock").css("display", "none");
+                if (mode == 1){
+                    $("#divTotalBlock").css("display", "block");
+                    $("#divPanelHeading").html(title);
+                    $("#divBlockContent").html(data);
+                } else {
+                    $("#divContentTitle").html(title);
+                    $("#divContent").html(data);
+                }
+            },
+            error: function(data){
+                $("#divContent").html(data);
+            }
+        });
+    }
+
+    function closeBlockView(){
+        $("#divPanelHeading").html();
+        $("#divBlockContent").html();
+        $("#divTotalBlock").css("display", "none");
+    }
+</script>
 </body>
 </html>
