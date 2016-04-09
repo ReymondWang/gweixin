@@ -118,6 +118,54 @@
                     <td>紫色天光</td>
                     <td>未绑定</td>
                 </tr>
+                <tr class="common-table-tr">
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td>zisetianguang@sina.com</td>
+                    <td>zisetianguang</td>
+                    <td>订阅号</td>
+                    <td>紫色天光</td>
+                    <td>未绑定</td>
+                </tr>
+                <tr class="common-table-tr">
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td>zisetianguang@sina.com</td>
+                    <td>zisetianguang</td>
+                    <td>订阅号</td>
+                    <td>紫色天光</td>
+                    <td>未绑定</td>
+                </tr>
+                <tr class="common-table-tr">
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td>zisetianguang@sina.com</td>
+                    <td>zisetianguang</td>
+                    <td>订阅号</td>
+                    <td>紫色天光</td>
+                    <td>未绑定</td>
+                </tr>
+                <tr class="common-table-tr">
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td>zisetianguang@sina.com</td>
+                    <td>zisetianguang</td>
+                    <td>订阅号</td>
+                    <td>紫色天光</td>
+                    <td>未绑定</td>
+                </tr>
+                <tr class="common-table-tr">
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td>zisetianguang@sina.com</td>
+                    <td>zisetianguang</td>
+                    <td>订阅号</td>
+                    <td>紫色天光</td>
+                    <td>未绑定</td>
+                </tr>
+                <tr class="common-table-tr">
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td>zisetianguang@sina.com</td>
+                    <td>zisetianguang</td>
+                    <td>订阅号</td>
+                    <td>紫色天光</td>
+                    <td>未绑定</td>
+                </tr>
             </tbody>
         </table>
     </div>

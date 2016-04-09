@@ -23,5 +23,7 @@ func (this *MainController) Get() {
     tmpStr := util.Sha1Encode(util.JoinArr(tmpArr))
     if (signatrue == tmpStr){
         this.Ctx.WriteString(echostr)
-    }
+    } else {
+		this.Ctx.WriteString("")
+	}
 }
